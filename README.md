@@ -45,5 +45,5 @@ Contributions are welcome! Feel free to fork the repo and submit a pull request.
 This project is licensed under the MIT License.
 
 ---
-💡 **Created by [Your Name](https://github.com/abh0x1)** | Learning Flask & Cybersecurity 🚀
+💡 **Created by [abh0x1](https://github.com/abh0x1)** 
 
