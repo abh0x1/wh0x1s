@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block title %}Wh0x1s{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<div class="container">
+    <h1 class="mainweb">Whois Information: {{ data.domain_name or "Not Available" }}</h1>
+
+    <div class="info"><div class="label">Domain Name:</div><p>{{ data.domain_name or "Not Available" }}</p></div>
+    <div class="info"><div class="label">Registrar:</div><p>{{ data.registrar or "Not Available" }}</p></div>
+    <div class="info"><div class="label">Registrar URL:</div><p>{{ data.registrar_url or "Not Available" }}</p></div>
+    <div class="info"><div class="label">Reseller:</div><p>{{ data.reseller or "Not Available" }}</p></div>
+    <div class="info"><div class="label">WHOIS Server:</div><p>{{ data.whois_server or "Not Available" }}</p></div>
+    <div class="info"><div class="label">Referral URL:</div><p>{{ data.referral_url or data.referer or data.referrer or "Not Available" }}</p></div>
+
+    <div class="info">
+        <div class="label">Updated Date:</div>
+        <p>
+            {% if data.updated_date %}
+                {% if data.updated_date is iterable and data.updated_date is not string %}
+                    <ul>{% for ud in data.updated_date %}<li>{{ ud }}</li>{% endfor %}</ul>
+                {% else %}
+                    <ul><li>{{ data.updated_date }}</li></ul>
+                {% endif %}
+            {% else %}
+                Not Available
+            {% endif %}
+        </p>
+    </div>
+
+    <div class="info">
+        <div class="label">Creation Date:</div>
+        <p>
+            {% if data.creation_date %}
+                {% if data.creation_date is iterable and data.creation_date is not string %}
+                    <ul>{% for cd in data.creation_date %}<li>{{ cd }}</li>{% endfor %}</ul>
+                {% else %}
+                    <ul><li>{{ data.creation_date }}</li></ul>
+                {% endif %}
+            {% else %}
+                Not Available
+            {% endif %}
+        </p>
+    </div>
+
+    <div class="info">
+        <div class="label">Expiration Date:</div>
+        <p>
+            {% if data.expiration_date %}
+                {% if data.expiration_date is iterable and data.expiration_date is not string %}
+                    <ul>{% for ed in data.expiration_date %}<li>{{ ed }}</li>{% endfor %}</ul>
+                {% else %}
+                    <ul><li>{{ data.expiration_date }}</li></ul>
+                {% endif %}
+            {% else %}
+                Not Available
+            {% endif %}
+        </p>
+    </div>
+
+    <div class="info">
+        <div class="label">Name Servers:</div>
+        <p>
+            {% if data.name_servers %}
+                <ul>{% for ns in data.name_servers %}<li>{{ ns }}</li>{% endfor %}</ul>
+            {% else %}
+                Not Available
+            {% endif %}
+        </p>
+    </div>
+
+    <div class="info">
+        <div class="label">Status:</div>
+        <p>
+            {% if data.status %}
+                <ul>{% for status in data.status %}<li>{{ status }}</li>{% endfor %}</ul>
+            {% else %}
+                Not Available
+            {% endif %}
+        </p>
+    </div>
+
+    <div class="info">
+        <div class="label">Emails:</div>
+        <p>
+            {% if data.emails %}
+                {% if data.emails is iterable and data.emails is not string %}
+                    <ul>{% for email in data.emails %}<li>{{ email }}</li>{% endfor %}</ul>
+                {% else %}
+                    <ul><li>{{ data.emails }}</li></ul>
+                {% endif %}
+            {% else %}
+                Not Available
+            {% endif %}
+        </p>
+    </div>
+
+    <div class="info"><div class="label">DNS Sec:</div><p>{{ data.dnssec or "Not Available" }}</p></div>
+    <div class="info"><div class="label">Name:</div><p>{{ data.name or "Not Available" }}</p></div>
+    <div class="info"><div class="label">Organization:</div><p>{{ data.org or "Not Available" }}</p></div>
+    <div class="info"><div class="label">Address:</div><p>{{ data.address or "Not Available" }}</p></div>
+    <div class="info"><div class="label">City:</div><p>{{ data.city or "Not Available" }}</p></div>
+    <div class="info"><div class="label">State:</div><p>{{ data.state or "Not Available" }}</p></div>
+    <div class="info"><div class="label">Registrant Postal Code:</div><p>{{ data.registrant_postal_code or "Not Available" }}</p></div>
+    <div class="info"><div class="label">Country:</div><p>{{ data.country or "Not Available" }}</p></div>
+</div>
+
+<div class="btns">
+    <button class="print-btn" onclick="window.print()">Print</button>
+    <a href="{{ url_for('download_file') }}" class="btn">Download</a>
+    <a href="{{ url_for('index') }}" class="btn" style="background-color: red;">Back</a>
+</div>
+
+{% endblock %}
