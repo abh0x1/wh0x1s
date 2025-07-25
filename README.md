@@ -12,7 +12,7 @@ wh0x1s is a beginner-friendly Flask-based web application that retrieves WHOIS i
 ## 🖥️ Installation & Usage
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/yourusername/wh0x1s.git
+git clone https://github.com/abh0x1/wh0x1s.git
 cd wh0x1s
 ```
 
